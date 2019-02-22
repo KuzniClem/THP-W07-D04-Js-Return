@@ -20,6 +20,8 @@ while (floatArr.indexOf(maxValue) >= 0) {
 	currenciesName.splice(floatArr.indexOf(maxValue), 1);
 }
 
+floatArr = Object.values(currenciesHash).map( (x, index) => parseFloat(x.replace(/\$/, '')));
+
 while (floatArr.indexOf(minValue) >= 0) {
 	console.log(currenciesName[floatArr.indexOf(minValue)]);
 	floatArr.splice(floatArr.indexOf(minValue), 1);
