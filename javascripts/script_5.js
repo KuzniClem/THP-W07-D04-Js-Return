@@ -12,23 +12,20 @@ console.log(Object.values(currenciesHash).map( (x, index) => parseFloat(x.replac
 let i = 0;
 
 let floatArr = Object.values(currenciesHash).map( (x, index) => parseFloat(x.replace(/\$/, '')));
+let maxValue = Math.max(...floatArr);
+let minValue = Math.min(...floatArr);
 
-console.log(Object.keys(currenciesHash)[floatArr.indexOf(Math.max(...floatArr))]);
+while (floatArr.indexOf(maxValue) >= 0) {
+	console.log(Object.keys(currenciesHash)[floatArr.indexOf(maxValue)]);
+	floatArr.splice(floatArr.indexOf(maxValue), 1);
+	currenciesName.splice(floatArr.indexOf(maxValue), 1);
+}
 
-console.log(Object.keys(currenciesHash)[floatArr.indexOf(Math.min(...floatArr))]);
-
-
-// console.log(floatArr.filter(value => value === Math.max(...floatArr)));
-
-// console.log(floatArr.filter(value => value === Math.min(...floatArr)));
-
-// if(!Object.keys) Object.keys = function(o){
-// 	if (o !== Object(o))
-// 		throw new TypeError('Object.keys called on non-object');
-// 	var ret=[],p;
-// 	for(p in o) if(Object.prototype.hasOwnProperty.call(o,p)) ret.push(p);
-// 		return ret;
-// }
+while (floatArr.indexOf(minValue) >= 0) {
+	console.log(currenciesName[floatArr.indexOf(minValue)]);
+	floatArr.splice(floatArr.indexOf(minValue), 1);
+	currenciesName.splice(floatArr.indexOf(minValue), 1);
+}
 
 i = 0;
 for(let index in Object.keys(currenciesHash)) {
@@ -36,5 +33,6 @@ for(let index in Object.keys(currenciesHash)) {
 }
 console.log(i);
 
+floatArr = Object.values(currenciesHash).map( (x, index) => parseFloat(x.replace(/\$/, '')));
 let sortedFloatArr = floatArr.sort(function (a, b) { return a - b })
 console.log(sortedFloatArr[sortedFloatArr.findIndex(value => value >= 6000) - 1]);
