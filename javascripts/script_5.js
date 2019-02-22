@@ -7,7 +7,6 @@ const currenciesValue = ["$6558.07", "$468.95", "$0.487526", "$762.84", "$8.86",
 "$0.042993", "$0.000325", "$0.000271", "$0.002799", "$0.071591", "$1.17", "$0.001171", "$0.000651", "$0.000195", "$0.001562", "$0.008721", "$0.000065", "$0.000130", "$0.002473", "$0.000065", "$0.000325", "$0.656235", "$0.000254", "$0.000518", "$0.000065", "$0.054733", "$9.85", "$0.000520", "$0.000259", "$0.003288", "$0.006578", "$0.004273", "$0.024932", "$0.011394"];
 
 const currenciesHash = currenciesName.reduce((o, key, index) => ({ ...o, [currenciesName[index]]: currenciesValue[index]}), {});
-console.log(Object.values(currenciesHash).map( (x, index) => parseFloat(x.replace(/\$/, ''))));
 
 let i = 0;
 
@@ -35,4 +34,8 @@ console.log(i);
 
 floatArr = Object.values(currenciesHash).map( (x, index) => parseFloat(x.replace(/\$/, '')));
 let sortedFloatArr = floatArr.sort(function (a, b) { return a - b })
+console.log(sortedFloatArr.slice(0, [sortedFloatArr.findIndex(value => value >= 6000)]));
+
+floatArr = Object.values(currenciesHash).map( (x, index) => parseFloat(x.replace(/\$/, '')));
+sortedFloatArr = floatArr.sort(function (a, b) { return a - b })
 console.log(sortedFloatArr[sortedFloatArr.findIndex(value => value >= 6000) - 1]);
