@@ -14,13 +14,7 @@ let floatArr = Object.values(currenciesHash).map( (x, index) => parseFloat(x.rep
 let maxValue = Math.max(...floatArr);
 let minValue = Math.min(...floatArr);
 
-while (floatArr.indexOf(maxValue) >= 0) {
-	console.log(Object.keys(currenciesHash)[floatArr.indexOf(maxValue)]);
-	floatArr.splice(floatArr.indexOf(maxValue), 1);
-	currenciesName.splice(floatArr.indexOf(maxValue), 1);
-}
-
-floatArr = Object.values(currenciesHash).map( (x, index) => parseFloat(x.replace(/\$/, '')));
+console.log(Object.keys(currenciesHash)[floatArr.indexOf(maxValue)]);
 
 while (floatArr.indexOf(minValue) >= 0) {
 	console.log(currenciesName[floatArr.indexOf(minValue)]);
